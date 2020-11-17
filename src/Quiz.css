@@ -1,0 +1,86 @@
+.quiz-start-area {
+    display: flex;
+    background-color: seashell;
+    position: relative;
+    flex-flow: column;
+    color: tomato;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 80%;
+}
+
+.quiz-area {
+    display: flex;
+    background-color: seashell;
+    padding: 30px;
+    border-radius: 25px;
+    position: relative;
+    color: tomato;
+    align-items: center;
+    justify-content: flex-start;
+    flex-flow: column;
+    align-content: space-between;
+    height: 80%;
+
+}
+
+.quiz-end-area {
+    display: flex;
+    background-color: seashell;
+    position: relative;
+    flex-flow: column;
+    color: tomato;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    height: 80%;
+}
+
+
+.top-logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: -50px;
+    display: block;
+}
+
+.nav-button {
+    background-color: teal;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+.button-group {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+    width: 90%;
+    align-content: space-between;
+}
+
+.option-button {
+    background-color: teal;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+}
