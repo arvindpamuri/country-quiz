@@ -84,3 +84,11 @@
     cursor: pointer;
     border-radius: 10px;
 }
+
+.correct-button {
+    background-color: rgb(84, 240, 84);
+}
+
+.wrong-button {
+    background-color: rgb(253, 10, 10);
+}
