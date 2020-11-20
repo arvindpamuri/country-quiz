@@ -15,7 +15,8 @@
 .quiz-area {
     display: flex;
     background-color: whitesmoke;
-    padding: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     border-radius: 25px;
     position: relative;
     color: tomato;
@@ -23,7 +24,6 @@
     justify-content: flex-start;
     flex-flow: column;
     align-content: space-between;
-    height: 80%;
 }
 
 .quiz-end-area {
@@ -48,8 +48,8 @@
 }
 
 .question {
-    padding: 20px;
-    color: rgb(36, 29, 29)
+    padding-top: 40px ;
+    color: rgb(36, 29, 29);
 }
 
 .nav-button {
@@ -113,6 +113,10 @@
     color: whitesmoke;
 }
 
+.question-img {
+    width: 20%;
+    height: 20%;
+}
 
 
 @media only screen and (max-width: 600px) {

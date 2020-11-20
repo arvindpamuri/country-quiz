@@ -9,6 +9,7 @@
 }
 
 .footer {
+  position: absolute;
   margin-bottom: 0;
   min-width: 5vh;
 }

@@ -16,7 +16,8 @@ class Main extends React.Component {
             buttonDisabled: false,
             showAnswer: false,
             score: 0,
-            questionNumber: 1
+            questionNumber: 1,
+            questionType: ''
         }
 
         this.fetchData = this.fetchData.bind(this); 
@@ -24,33 +25,13 @@ class Main extends React.Component {
         this.checkAnswer = this.checkAnswer.bind(this);
         this.retry = this.retry.bind(this);
         this.next = this.next.bind(this);
+        this.sortOptions = this.sortOptions.bind(this);
+        this.capitalQuestion = this.capitalQuestion.bind(this);
+        this.flagQuestion = this.flagQuestion.bind(this);
     }
 
-    loadQuestion() {
-
-        if (this.state.data.length > 0) {
-            let item = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)]
-            
-            let question = item.name;
-            let answer = item.capital;
-
-            let options_set = new Set();
-            let main_entry = {};
-            main_entry.capital = answer;
-            main_entry.value = 'correct';
-            options_set.add(main_entry)
-            while(options_set.size < 4) {
-                let option_entry = {};
-
-                option_entry.capital = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)].capital;
-
-                option_entry.value = 'no';
-
-                options_set.add(option_entry)
-            }
-
-            let options = [...options_set];
-
+    sortOptions(options_set) {
+        let options = [...options_set];
             //fischer-yates algorithm for random shuffle
             var i = options.length, k , temp;
             while(--i > 0){
@@ -59,12 +40,85 @@ class Main extends React.Component {
                 options[k] = options[i];
                 options[i] = temp;
             }
+            return options;
+    }
 
-            this.setState({
-                question: question,
-                answer: answer,
-                options: [...options]
-            })
+    capitalQuestion() {
+
+        let item = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)]
+            
+        let question = item.name;
+        let answer = item.capital;
+
+        let options_set = new Set();
+        let main_entry = {};
+        main_entry.capital = answer;
+        main_entry.value = 'correct';
+        options_set.add(main_entry)
+        while(options_set.size < 4) {
+            let option_entry = {};
+
+            option_entry.capital = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)].capital;
+
+            option_entry.value = 'no';
+
+            options_set.add(option_entry)
+        }
+
+        let options = this.sortOptions(options_set)
+
+        this.setState({
+            question: question,
+            answer: answer,
+            options: options,
+            questionType: 'capital'
+        })
+    }
+
+    flagQuestion() {
+
+        let item = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)]
+            
+        let question = item.flag;
+        let answer = item.name;
+
+        let options_set = new Set();
+        let main_entry = {};
+        main_entry.capital = answer;
+        main_entry.value = 'correct';
+        options_set.add(main_entry)
+        while(options_set.size < 4) {
+            let option_entry = {};
+
+            option_entry.capital = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)].name;
+
+            option_entry.value = 'no';
+
+            options_set.add(option_entry)
+        }
+
+        let options = this.sortOptions(options_set)
+
+        this.setState({
+            question: question,
+            answer: answer,
+            options: options,
+            questionType: 'flag'
+        })
+    }
+
+    loadQuestion() {
+
+        if (this.state.data.length > 0) {
+
+            let questionType = Math.round(Math.random())
+
+            if (questionType === 0) {
+                this.capitalQuestion()
+            }
+            else {
+                this.flagQuestion()
+            }
         }
         
         this.setState({quizState: 'ongoing'})
@@ -142,7 +196,8 @@ class Main extends React.Component {
             let lst = this.state.data.map((item) => {
                 var obj = {
                     name: item.name,
-                    capital: item.capital
+                    capital: item.capital,
+                    flag: item.flag
                 }
                 return obj;
             })
@@ -171,6 +226,7 @@ class Main extends React.Component {
                     showAnswer = {this.state.showAnswer}
                     score = {this.state.score}
                     questionNumber = {this.state.questionNumber}
+                    questionType = {this.state.questionType}
                     next = {this.next}
                 />
             </div>

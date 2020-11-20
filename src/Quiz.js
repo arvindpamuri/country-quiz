@@ -68,7 +68,6 @@ class Quiz extends React.Component {
 
             let correctClass = '', wrongClass = '';
 
-
             if (this.props.showAnswer) {
                 correctClass = 'correct-button'
                 wrongClass = 'wrong-button'
@@ -76,12 +75,23 @@ class Quiz extends React.Component {
             return(
                 <div className="quiz-area">
                     <img src={quizlogo} alt="logo" className="top-logo"/>
+                    {(this.props.questionType === 'capital') ?
+                        <section className="question">
+                            <h4>
+                                <span>{this.props.questionNumber}.</span>
+                                <span> What is the capital of {this.props.question}?</span>
+                            </h4>
+                        </section> 
+                    :
                     <section className="question">
-                        <h1>
+                        <span><img src={this.props.question} alt="logo" className="question-img"/></span>
+                        <h4>
                             <span>{this.props.questionNumber}.</span>
-                            <span> What is the capital of {this.props.question}?</span>
-                        </h1>
+                            <span> The flag belongs to which country?</span>
+                        </h4>
                     </section>
+                    }
+
                     <section className="button-group">
                         <button className={`option-button ${(this.props.options[0].value === 'correct') ? correctClass : ((this.props.options[0].value === 'wrong') ? wrongClass: '')}`}
                             onClick={this.handleOption} 
