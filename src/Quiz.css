@@ -37,6 +37,7 @@
     align-items: center;
     padding: 30px;
     min-height: 50vh;
+    text-align: center;
 }
 
 .top-logo {
@@ -50,6 +51,7 @@
 .question {
     padding-top: 40px ;
     color: rgb(36, 29, 29);
+    text-align: center;
 }
 
 .nav-button {
@@ -66,11 +68,11 @@
     margin: 10px 2px;
     cursor: pointer;
     border-radius: 10px;
-    opacity: 0.8;
 }
 
-.nav-button:hover:enabled {
-    opacity: 1.0;
+.nav-button:hover:disabled {
+    opacity: 0.8;
+    cursor:not-allowed;
 }
 
 .button-group {
@@ -103,6 +105,10 @@
     color: wheat;
 }
 
+.option-button:hover:disabled {
+    cursor:not-allowed;
+}
+
 .correct-button {
     background-color: rgb(0, 253, 0);
     color: whitesmoke;
@@ -118,6 +124,10 @@
     height: 20%;
 }
 
+i {
+    float: right;
+}
+
 
 @media only screen and (max-width: 600px) {
     .quiz-area {
@@ -125,5 +135,9 @@
     }
     .top-logo {
         display: none;
+    }
+    .question {
+        margin-left: 10px ;
+        margin-right: 10px;
     }
 }

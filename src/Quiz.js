@@ -97,8 +97,9 @@ class Quiz extends React.Component {
                             onClick={this.handleOption} 
                             value={this.props.options[0].capital}
                             disabled={this.props.disabled}
-                        >
+                        >   
                             {this.props.options[0].capital}
+                            {this.props.showAnswer ? ((this.props.options[0].value === 'correct') ? <i className="material-icons">check</i> : ((this.props.options[0].value) === 'wrong' ) ? <i className="material-icons">clear</i> : '')  : ''}
                         </button>
 
                         <button className={`option-button ${(this.props.options[1].value === 'correct') ? correctClass : ((this.props.options[1].value === 'wrong') ? wrongClass: '')}`}
@@ -107,6 +108,7 @@ class Quiz extends React.Component {
                             disabled={this.props.disabled} 
                         >
                             {this.props.options[1].capital}
+                            {this.props.showAnswer ? ((this.props.options[1].value === 'correct') ? <i className="material-icons">check</i> : ((this.props.options[1].value) === 'wrong' ) ? <i className="material-icons">clear</i> : '')  : ''}
                         </button>
 
                         <button className={`option-button ${(this.props.options[2].value === 'correct') ? correctClass : ((this.props.options[2].value === 'wrong') ? wrongClass: '')}`}
@@ -115,6 +117,7 @@ class Quiz extends React.Component {
                             disabled={this.props.disabled}
                         >
                             {this.props.options[2].capital}
+                            {this.props.showAnswer ? ((this.props.options[2].value === 'correct') ? <i className="material-icons">check</i> : ((this.props.options[2].value) === 'wrong' ) ? <i className="material-icons">clear</i> : '')  : ''}
                         </button>
 
                         <button className={`option-button ${(this.props.options[3].value === 'correct') ? correctClass : ((this.props.options[3].value === 'wrong') ? wrongClass: '')}`}
@@ -123,6 +126,7 @@ class Quiz extends React.Component {
                             disabled={this.props.disabled}
                         >
                             {this.props.options[3].capital}
+                            {this.props.showAnswer ? ((this.props.options[3].value === 'correct') ? <i className="material-icons">check</i> : ((this.props.options[3].value) === 'wrong' ) ? <i className="material-icons">clear</i> : '')  : ''}
                         </button>
 
                     </section>

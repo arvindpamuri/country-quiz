@@ -6,7 +6,7 @@ function App() {
       <div className="page-container">
         <Main/>
         <footer className="footer">
-          <p>Aravind Pamoori@devchallenges.io</p>
+          <p>Aravind Pamoori @ devchallenges.io</p>
         </footer>
       </div>
     </div>
