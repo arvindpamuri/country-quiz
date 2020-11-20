@@ -10,10 +10,30 @@ const Start = ({loadQuestion}) => {
                 <img src={quizlogo} alt="logo"/>
             </section>
             <section>
-                <p>Test your knowledge on countries! It contains 10 questions.</p>
+                <h3>How well do you know about countries around the world? Take the test to find out!</h3>
+                <p></p>
             </section>
             <section>
-                <button className="nav-button" onClick={loadQuestion}>start</button>
+                <button className="nav-button" onClick={loadQuestion}>START</button>
+            </section>
+        </div>
+    );
+}
+
+const End = ({retry, score}) => {
+    return(
+        <div className="quiz-end-area">
+            <section>
+                <img src={winner} alt="logo"/>
+            </section>
+            <section>
+                <h1>You scored {score} points</h1>
+            </section>
+            <section>
+                <button className="nav-button" onClick={retry}>RETRY</button>
+            </section>
+            <section>
+                <p>(reload the page. I don't know why the button doesn't work. Drop a message if you can help. :)</p>
             </section>
         </div>
     );
@@ -26,15 +46,10 @@ class Quiz extends React.Component {
         
         this.handleOption = this.handleOption.bind(this)
         this.handleNext = this.handleNext.bind(this)
-        this.handleRetry = this.handleRetry.bind(this)
     }
 
     handleOption(el) {
         this.props.checkAnswer(el.target.value)
-    }
-
-    handleRetry() {
-        setTimeout(() => { this.props.retry(); }, 200);
     }
 
     handleNext() {
@@ -68,33 +83,33 @@ class Quiz extends React.Component {
                         </h1>
                     </section>
                     <section className="button-group">
-                        <button className={`option-button ${(this.props.options[0].value) ? correctClass : wrongClass}`}
+                        <button className={`option-button ${(this.props.options[0].value === 'correct') ? correctClass : ((this.props.options[0].value === 'wrong') ? wrongClass: '')}`}
                             onClick={this.handleOption} 
-                            value={this.props.options[0].value}
+                            value={this.props.options[0].capital}
                             disabled={this.props.disabled}
                         >
                             {this.props.options[0].capital}
                         </button>
 
-                        <button className={`option-button ${(this.props.options[1].value) ? correctClass : wrongClass}`}
+                        <button className={`option-button ${(this.props.options[1].value === 'correct') ? correctClass : ((this.props.options[1].value === 'wrong') ? wrongClass: '')}`}
                             onClick={this.handleOption} 
-                            value={this.props.options[1].value}
-                            disabled={this.props.disabled}
+                            value={this.props.options[1].capital}
+                            disabled={this.props.disabled} 
                         >
                             {this.props.options[1].capital}
                         </button>
 
-                        <button className={`option-button ${(this.props.options[2].value) ? correctClass : wrongClass}`}
+                        <button className={`option-button ${(this.props.options[2].value === 'correct') ? correctClass : ((this.props.options[2].value === 'wrong') ? wrongClass: '')}`}
                             onClick={this.handleOption} 
-                            value={this.props.options[2].value}
+                            value={this.props.options[2].capital}
                             disabled={this.props.disabled}
                         >
                             {this.props.options[2].capital}
                         </button>
 
-                        <button className={`option-button ${(this.props.options[3].value) ? correctClass : wrongClass}`}
+                        <button className={`option-button ${(this.props.options[3].value === 'correct') ? correctClass : ((this.props.options[3].value === 'wrong') ? wrongClass: '')}`}
                             onClick={this.handleOption} 
-                            value={this.props.options[3].value}
+                            value={this.props.options[3].capital}
                             disabled={this.props.disabled}
                         >
                             {this.props.options[3].capital}
@@ -107,19 +122,9 @@ class Quiz extends React.Component {
                 </div>
             );
         }
-        else if(this.props.quizState === "end") {
+        else {
             return(
-                <div className="quiz-end-area">
-                    <section>
-                        <img src={winner} alt="logo"/>
-                    </section>
-                    <section>
-                        <h1>You scored {this.props.score} points</h1>
-                    </section>
-                    <section>
-                        <button className="nav-button" onClick={this.handleRetry}>Retry?</button>
-                    </section>
-                </div>
+                <End retry={() =>this.props.retry()} score={this.props.score}/>
             );
         }
     }

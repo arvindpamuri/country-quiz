@@ -8,8 +8,7 @@
     align-items: center;
     padding: 30px;
     text-align: center;
-    color: rgb(10, 10, 126);
-    font-weight: 500;
+    color: tomato;
     min-height: 50vh;
 }
 
@@ -25,7 +24,6 @@
     flex-flow: column;
     align-content: space-between;
     height: 80%;
-
 }
 
 .quiz-end-area {
@@ -58,19 +56,20 @@
     background-color: teal;
     border: none;
     outline: none;
-    color: white;
+    color: whitesmoke;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-weight: bold;
     margin: 10px 2px;
     cursor: pointer;
     border-radius: 10px;
     opacity: 0.8;
 }
 
-.nav-button:hover {
+.nav-button:hover:enabled {
     opacity: 1.0;
 }
 

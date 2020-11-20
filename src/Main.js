@@ -37,14 +37,14 @@ class Main extends React.Component {
             let options_set = new Set();
             let main_entry = {};
             main_entry.capital = answer;
-            main_entry.value = true;
+            main_entry.value = 'correct';
             options_set.add(main_entry)
             while(options_set.size < 4) {
                 let option_entry = {};
 
                 option_entry.capital = this.state.country_capital[Math.floor(Math.random()*this.state.country_capital.length)].capital;
 
-                option_entry.value = false;
+                option_entry.value = 'no';
 
                 options_set.add(option_entry)
             }
@@ -71,18 +71,22 @@ class Main extends React.Component {
     }
 
     checkAnswer(ans) {
-
-        if(ans === 'false') {
+        if(ans === this.state.answer) {
             this.setState({
                 buttonDisabled: true,
                 showAnswer: true,
+                score: this.state.score + 1
             })
         }   
         else {
+            let opts = this.state.options;
+            let index = opts.findIndex((item => item.capital === ans));
+            opts[index].value = 'wrong'
+            
             this.setState({
-                score: this.state.score + 1,
                 buttonDisabled: true,
                 showAnswer: true,
+                options: opts
             })
         }
     }
@@ -107,6 +111,10 @@ class Main extends React.Component {
     }
 
     retry() {
+        console.log(this.state)
+
+        if (this.state.quizState === "end") {
+
         this.setState = ({
             data: [],
             country_capital: [],
@@ -119,6 +127,7 @@ class Main extends React.Component {
             score: 0,
             questionNumber: 1
         }, ()=> {console.log(this.state)})
+    }
     }
 
     fetchData() {
@@ -154,13 +163,13 @@ class Main extends React.Component {
                 <h1>Country Quiz</h1>
                 <Quiz quizState={this.state.quizState}
                     loadQuestion = {this.loadQuestion}
+                    retry = {this.retry}
                     question = {this.state.question}
                     options = {this.state.options}
                     checkAnswer = {this.checkAnswer}
                     disabled = {this.state.buttonDisabled}
                     showAnswer = {this.state.showAnswer}
                     score = {this.state.score}
-                    retry = {this.retry}
                     questionNumber = {this.state.questionNumber}
                     next = {this.next}
                 />
