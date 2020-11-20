@@ -35,13 +35,6 @@
 
 ![screenshot](https://github.com/arvindpamuri/country-quiz/blob/master/quiz-demo.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
-- Where can I see your demo?
-- What was your experience?
-- What have you learned/improved?
-- Your wisdom? :)
-
 - Did not use any state management library, not even context API or hooks. Hence the code is verbose.
 - Helped to very well understand lifting state up through components and the importance of state management.
 - Used fischer-yates algorithm for random question generation.
@@ -84,7 +77,7 @@ $ npm start
 
 <!-- This section should list any articles or add-ons/plugins that helps you to complete the project. This is optional but it will help you in the future. For example: -->
 
-- [React.js](https://reactjs.org/)
+- [React.js](https://reactjs.org/docs/getting-started.html)
 
 ## Contact
 
