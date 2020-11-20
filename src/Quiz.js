@@ -1,13 +1,16 @@
 import React from 'react';
 import  './Quiz.css';
 import quizlogo from './quizlogo.svg';
+import winner from './winner.svg';
 
 const Start = ({loadQuestion}) => {
     return(
         <div className="quiz-start-area"> 
             <section>
                 <img src={quizlogo} alt="logo"/>
-                <h4>Test your knowledge on countries! It contains 10 questions.</h4>
+            </section>
+            <section>
+                <p>Test your knowledge on countries! It contains 10 questions.</p>
             </section>
             <section>
                 <button className="nav-button" onClick={loadQuestion}>start</button>
@@ -48,7 +51,7 @@ class Quiz extends React.Component {
         }
         else if (this.props.quizState === "ongoing") {
 
-            let correctClass = null, wrongClass = '';
+            let correctClass = '', wrongClass = '';
 
 
             if (this.props.showAnswer) {
@@ -58,10 +61,10 @@ class Quiz extends React.Component {
             return(
                 <div className="quiz-area">
                     <img src={quizlogo} alt="logo" className="top-logo"/>
-                    <section>
+                    <section className="question">
                         <h1>
                             <span>{this.props.questionNumber}.</span>
-                            <span> what is the capital of {this.props.question}</span>
+                            <span> What is the capital of {this.props.question}?</span>
                         </h1>
                     </section>
                     <section className="button-group">
@@ -99,14 +102,17 @@ class Quiz extends React.Component {
 
                     </section>
                     <section>
-                        <button className="nav-button" onClick={this.handleNext}>Next</button>
+                        <button className="nav-button" onClick={this.handleNext} disabled={!this.props.showAnswer}>Next</button>
                     </section>
                 </div>
             );
         }
-        else {
+        else if(this.props.quizState === "end") {
             return(
                 <div className="quiz-end-area">
+                    <section>
+                        <img src={winner} alt="logo"/>
+                    </section>
                     <section>
                         <h1>You scored {this.props.score} points</h1>
                     </section>

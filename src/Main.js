@@ -107,7 +107,6 @@ class Main extends React.Component {
     }
 
     retry() {
-        console.log(this.state)
         this.setState = ({
             data: [],
             country_capital: [],
@@ -119,7 +118,7 @@ class Main extends React.Component {
             showAnswer: false,
             score: 0,
             questionNumber: 1
-        })
+        }, ()=> {console.log(this.state)})
     }
 
     fetchData() {

@@ -4,8 +4,19 @@ h1 {
 
 .play-area {
     display: flex;
-    height: 70vh;
+    min-height: 80vh;
     width: 70vh;
     position: absolute;
     flex-flow: column;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .play-area {
+        width: 80%;
+    }
 }

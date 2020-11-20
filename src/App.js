@@ -5,6 +5,9 @@ function App() {
     <div className="App">
       <div className="page-container">
         <Main/>
+        <footer className="footer">
+          <p>Aravind Pamoori@devchallenges.io</p>
+        </footer>
       </div>
     </div>
   );
