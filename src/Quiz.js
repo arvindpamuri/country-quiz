@@ -32,9 +32,7 @@ const End = ({retry, score}) => {
             <section>
                 <button className="nav-button" onClick={retry}>RETRY</button>
             </section>
-            <section>
-                <p>(reload the page. I don't know why the button doesn't work. Drop a message if you can help. :)</p>
-            </section>
+            
         </div>
     );
 }

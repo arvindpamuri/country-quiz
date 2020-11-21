@@ -165,13 +165,8 @@ class Main extends React.Component {
     }
 
     retry() {
-        console.log(this.state)
 
-        if (this.state.quizState === "end") {
-
-        this.setState = ({
-            data: [],
-            country_capital: [],
+        this.setState({
             quizState: 'start',
             question: '',
             answer: '',
@@ -180,8 +175,8 @@ class Main extends React.Component {
             showAnswer: false,
             score: 0,
             questionNumber: 1
-        }, ()=> {console.log(this.state)})
-    }
+        })
+        this.loadQuestion()
     }
 
     fetchData() {
